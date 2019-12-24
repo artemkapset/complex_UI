@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ComplexUIDemo.Ext;
 using ComplexUIDemo.UI.Controls;
@@ -27,16 +28,29 @@ namespace ComplexUIDemo
         [OneTimeTearDown]
         public void AfterSuite()
         {
-            _driver.Quit();
+            //_driver.Quit();
         }
 
         [Test]
         public void TinyMCETest()
         {
             _driver.Url = "http://the-internet.herokuapp.com/tinymce";
-            var el = new TinyMCEPage(_driver);
-            el.SetValue(_testString);
-            Assert.That(el.GetValue(), Is.EqualTo(_testString));
+            var page = new TinyMCEPage(_driver);
+            page.SetValue(_testString);
+            Assert.That(page.GetValue(), Is.EqualTo(_testString));
+        }
+
+        [Test]
+        public void DynamicControlTest()
+        {
+            _driver.Url = "http://the-internet.herokuapp.com/dynamic_controls";
+            var page = new DynamicControlPage(_driver);
+            page.Form.IsElementPresented();
+            //Thread.Sleep(TimeSpan.FromSeconds(2));
+            page.Form.Button.Click();
+            //page.Form.Button.WaitUntil<bool>(_driver => !page.Form.Button.Text.Contains("Add"));
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            page.Form.IsElementPresented();
         }
 
         //[Test]
