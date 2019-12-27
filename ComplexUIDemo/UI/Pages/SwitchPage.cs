@@ -17,7 +17,7 @@ namespace ComplexUIDemo.UI.Pages
 
         /*protected List<IWebElement> SwitchContainers { get
             {
-                return Driver.FindElements(By.CssSelector("#example ul li")).ToList(); 
+                return Driver.FindElements(By.CssSelector("#example ul li")).ToList();
             } }*/
 
         public void SetAll(bool value)

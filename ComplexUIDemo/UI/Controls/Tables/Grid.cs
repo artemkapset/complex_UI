@@ -66,7 +66,6 @@ namespace ComplexUIDemo.UI.Controls
             }
 
             return index;
-        }
-        
+        }        
     }
 }

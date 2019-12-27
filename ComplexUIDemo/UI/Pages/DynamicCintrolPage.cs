@@ -15,6 +15,7 @@ namespace ComplexUIDemo.UI.Pages
         {
         }
 
-        public ExampleForm Form => Driver.Find<ExampleForm>(ExampleForm.DefaultLocator);
+        public ExampleFormCheckBox CheckBoxForm => Driver.Find<ExampleFormCheckBox>(ExampleFormCheckBox.DefaultLocator);
+        public ExampleFormTextField TextForm => Driver.Find<ExampleFormTextField>(ExampleFormTextField.DefaultLocator);
     }
 }

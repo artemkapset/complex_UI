@@ -13,11 +13,23 @@ namespace ComplexUIDemo.UI.Controls
         {
         }
 
+        public static By DefaultLocator = By.XPath(".//button");
         public string Text => WrappedElement.Text;
 
         public void Click()
         {
-            WrappedElement.Click();
+            try
+            {
+                Driver.FindElement(By.XPath("//button[@disabled]"));
+
+                WaitUntil(Driver => !WrappedElement.GetAttribute("disabled").Contains("disabled"));
+
+                WrappedElement.Click();
+            }
+            catch
+            {
+                WrappedElement.Click();
+            }
         }
     }
 }

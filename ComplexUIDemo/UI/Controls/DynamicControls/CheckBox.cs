@@ -13,13 +13,35 @@ namespace ComplexUIDemo.UI.Controls
         {
         }
 
-        public static By DefaultLocator = By.Id("checkbox");
+        public static By DefaultLocator = By.XPath(".//input[@type='checkbox']");
 
         public bool State
         {
             get
-            {                
-                return WrappedElement.Displayed;
+            {
+                var disp = WrappedElement.Displayed;
+                if (disp)
+                {
+                    Console.WriteLine("CheckBox is presented");
+                    return disp;
+                }
+                else
+                {
+                    Console.WriteLine("CheckBox is NOT Displayed");
+                    return disp;
+                }
+
+                //try
+                //{
+                //    var disp = WrappedElement.Displayed;
+                //    Console.WriteLine("CheckBox is presented");
+                //    return disp;
+                //}
+                //catch
+                //{
+                //    Console.WriteLine("CheckBox is presented");
+                //    return false;
+                //}
             }
         }
     }

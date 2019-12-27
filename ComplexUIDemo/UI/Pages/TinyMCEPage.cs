@@ -13,21 +13,23 @@ namespace ComplexUIDemo.UI.Pages
         }
 
         public TinyMCETextWindow Editor => Driver.Find<TinyMCETextWindow>(TinyMCETextWindow.DefaultLocator);        
-        private string _mainWindow => Driver.CurrentWindowHandle;
+        //private string _mainWindow => Driver.CurrentWindowHandle;
         private IWebElement _frame => Driver.FindElement(By.Id("mce_0_ifr"));
 
         public void SetValue(string value)
         {
             Driver.SwitchTo().Frame(_frame);
             Editor.Value = value;
-            Driver.SwitchTo().Window(_mainWindow);
+            Driver.SwitchTo().DefaultContent();
+            //Driver.SwitchTo().Window(_mainWindow);
         }
 
         public string GetValue()
         {
             Driver.SwitchTo().Frame(_frame);
             var value = Editor.Value;
-            Driver.SwitchTo().Window(_mainWindow);
+            Driver.SwitchTo().DefaultContent();
+            //Driver.SwitchTo().Window(_mainWindow);
 
             return value;
         }
